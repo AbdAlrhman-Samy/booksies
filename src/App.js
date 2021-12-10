@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+//Router imports
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+//MUI imports
+import Container from '@mui/material/Container';
+
+//Pages imports
+import Home from "./Pages/Home"
+import Error from "./Pages/Error"
+import Login from "./Pages/Login"
+import Signup from "./Pages/Signup"
+import Profile from "./Pages/Profile"
+import Timeline from "./Pages/Timeline"
+
+//Assets imports
+import bg from "./Assets/bg.svg"
+
+export default function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Container maxWidth="false"
+      sx={{backgroundImage: `url(${bg})`, minHeight: "100vh", backgroundRepeat:"no-repeat",
+            backgroundSize:"cover", py:2}}>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/timeline" element={<Timeline/>}/>
+          <Route path="*" element={<Error/>}/>
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
 }
-
-export default App;
