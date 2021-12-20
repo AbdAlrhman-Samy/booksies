@@ -9,6 +9,56 @@ import Divider from '@mui/material/Divider';
 import {GiBookshelf} from 'react-icons/gi'
 import {BsInfoSquare} from 'react-icons/bs'
 
+import BookInfo from './BookInfo';
+import { useState } from 'react';
+
+function Bookshelf() {
+
+    const [open, setOpen] = useState(false);
+  
+
+    return (
+        <div >
+            
+            <Divider><Typography variant="h3" color="white"> <Box sx={{display:"inline-block", color:"primary.light"}}><GiBookshelf/></Box> Bookshelf</Typography></Divider>
+            
+            <ImageList cols={5} sx={{ width: "100%", height: "60vh" }}>
+
+            {itemData.map((item) => (
+                <ImageListItem key={item.img}>
+
+                    <img
+                        src={`${item.img}?w=248&fit=crop&auto=format`}
+                        srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                        alt={item.title}
+                        loading="lazy"
+                    />
+
+                    <ImageListItemBar
+                        sx={{bgcolor:"background.default", py:0.5}}
+                        title={item.title}
+                        subtitle={<span>by: {item.author}</span>}
+                        position="below"
+                        actionIcon={
+                            <IconButton color="primary"
+                            aria-label={`info about ${item.title}`}
+                            onClick={()=>setOpen(true)}
+                            >
+                                <BsInfoSquare />
+                            </IconButton>}
+                    />
+
+                </ImageListItem>
+            ))}
+
+            </ImageList>
+
+            <BookInfo open={open} setOpen={setOpen}/>
+
+        </div>
+    )
+}
+
 const itemData = [
     {
       img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
@@ -71,42 +121,5 @@ const itemData = [
       author: 'southside_customs',
     },
   ];
-function Bookshelf() {
-    return (
-        <div >
-            
-            <Divider><Typography variant="h3" color="white"> <Box sx={{display:"inline-block", color:"primary.light"}}><GiBookshelf/></Box> Bookshelf</Typography></Divider>
-            
-            <ImageList cols={5} sx={{ width: "100%", height: "60vh" }}>
-
-            {itemData.map((item) => (
-                <ImageListItem key={item.img}>
-
-                    <img
-                        src={`${item.img}?w=248&fit=crop&auto=format`}
-                        srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                        alt={item.title}
-                        loading="lazy"
-                    />
-
-                    <ImageListItemBar
-                        sx={{bgcolor:"background.default", py:0.5}}
-                        title={item.title}
-                        subtitle={<span>by: {item.author}</span>}
-                        position="below"
-                        actionIcon={
-                            <IconButton color="primary"
-                            aria-label={`info about ${item.title}`}>
-                                <BsInfoSquare />
-                            </IconButton>}
-                    />
-
-                </ImageListItem>
-            ))}
-
-            </ImageList>
-        </div>
-    )
-}
 
 export default Bookshelf
