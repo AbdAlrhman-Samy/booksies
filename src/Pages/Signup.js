@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 //Components imports
 import SignupForm from "../Components/SignupForm";
+
 //MUI imports
 import Box from "@mui/material/Box"
 import Button from '@mui/material/Button';

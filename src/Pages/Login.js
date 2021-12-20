@@ -35,7 +35,7 @@ function Login() {
                     <Box my={5}>
                         <FaUserCircle style={{transform:"scale(5)"}}/>
                     </Box>
-                    <Divider><Typography variant="h6">Login to your Booksies account</Typography></Divider>
+                    <Divider><Typography variant="h6">Log in to Booksies</Typography></Divider>
                 </Box>
 
                 <SigninForm/>

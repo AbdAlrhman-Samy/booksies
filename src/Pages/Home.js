@@ -22,7 +22,7 @@ function Home() {
     return (
         <Container>
             <Box my={2} marginRight={0}>
-                <Link style={{ textDecoration: "none" }} to="login"><Button variant="contained" startIcon={<FiLogIn/>}>Login</Button></Link>
+                <Link style={{ textDecoration: "none" }} to="login"><Button variant="contained" color="secondary" startIcon={<FiLogIn/>}>Login</Button></Link>
             </Box>
 
             <Grid container spacing={2} justifyContent="center" alignItems="center" sx={{minHeight:'80vh', textAlign:'center'}}>
