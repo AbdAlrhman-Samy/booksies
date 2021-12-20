@@ -90,12 +90,12 @@ function Bookshelf() {
                     />
 
                     <ImageListItemBar
-                        sx={{bgcolor:"background.default"}}
+                        sx={{bgcolor:"background.default", py:0.5}}
                         title={item.title}
                         subtitle={<span>by: {item.author}</span>}
                         position="below"
                         actionIcon={
-                            <IconButton sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                            <IconButton color="primary"
                             aria-label={`info about ${item.title}`}>
                                 <BsInfoSquare />
                             </IconButton>}
