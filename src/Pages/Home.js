@@ -12,8 +12,7 @@ import Divider from '@mui/material/Divider';
 //Assets imports
 import logo from '../Assets/logo.png'
 import {FcConferenceCall} from 'react-icons/fc'
-import {FcSearch} from 'react-icons/fc'
-import {FcReading} from 'react-icons/fc'
+import {FcSearch, FcReading} from 'react-icons/fc'
 import {FiLogIn} from 'react-icons/fi'
 import {BsFillPersonPlusFill} from 'react-icons/bs'
 

@@ -20,7 +20,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Container maxWidth="false"
-      sx={{backgroundImage: `url(${bg})`, minHeight: "100vh", backgroundRepeat:"no-repeat",
+      sx={{backgroundImage: `url(${bg})`, minHeight: "100vh", backgroundRepeat:"no-repeat", backgroundAttachment:'fixed',
             backgroundSize:"cover", py:2}}>
         <Routes>
           <Route path="/" element={<Home/>}/>

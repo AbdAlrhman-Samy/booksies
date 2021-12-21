@@ -1,3 +1,6 @@
+//Router imports
+import { Link } from "react-router-dom";
+
 //Components imports
 import Bookshelf from "../Components/Bookshelf";
 
@@ -8,9 +11,8 @@ import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import {FiLogOut} from 'react-icons/fi'
+import {FiLogOut, FiEdit2} from 'react-icons/fi'
 import {ImHome} from 'react-icons/im'
-import {FiEdit2} from 'react-icons/fi'
 
 function Profile() {
     return (
@@ -36,12 +38,13 @@ function Profile() {
             </Box>
 
             <Box mx="auto" mb={2} sx={{display:"flex", flexDirection:"row", justifyContent:"space-between", width:"100%"}}>
-                <Button variant="contained" color="secondary" startIcon={<ImHome/>}>Home</Button>
-
+                <Link style={{ textDecoration: "none" }} to="/timeline"><Button variant="contained" color="secondary" startIcon={<ImHome/>}>Home</Button></Link>
+        
                 <Button variant="contained" size="small" color="primary" endIcon={<FiLogOut/>}>Log out</Button>
             </Box>
             
             <Bookshelf/>
+
         </Container>
     )
 }
