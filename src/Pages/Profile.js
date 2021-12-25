@@ -16,7 +16,7 @@ import {ImHome} from 'react-icons/im'
 
 import { getAuth, signOut } from "firebase/auth";
 
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { AuthContext } from "../API/AuthContext"
 
 

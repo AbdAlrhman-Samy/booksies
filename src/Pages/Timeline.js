@@ -40,7 +40,7 @@ function Timeline() {
 
             </Grid>
             
-            <Fab variant="extended" size="large" color="secondary" aria-label="add" sx={{position:'fixed', bottom:50, right:10}}>
+            <Fab variant="extended" size="large" color="secondary" aria-label="add" sx={{position:'fixed', bottom:20, right:10}}>
                 <BiBookAdd style={{ marginRight: 10 }} />
                 Add Book Review
             </Fab>

@@ -6,8 +6,16 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from "@mui/system/Box"
 
+import ReviewModal from './ReviewModal';
+
+import { useState } from 'react';
+
+
 
 function NewReview() {
+
+    const [open, setOpen] = useState(false);
+
     return (
         <Card sx={{ display:'flex', flexDirection:'row', m:1.5, alignItems:'center' }}>
             <CardMedia
@@ -26,11 +34,11 @@ function NewReview() {
                 </CardContent>
 
                 <CardActions>
-                    <Button size="small">Read Review</Button>
+                    <Button size="small" onClick={()=>setOpen(true)}>Read Review</Button>
                 </CardActions>
             </Box>
 
-            
+            <ReviewModal open={open} setOpen={setOpen}/>
 
         </Card>
     )
