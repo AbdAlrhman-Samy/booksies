@@ -9,7 +9,7 @@ import Divider from '@mui/material/Divider';
 import {GiBookshelf} from 'react-icons/gi'
 import {BsInfoSquare} from 'react-icons/bs'
 
-import BookInfo from './BookInfo';
+import ReviewModal from './ReviewModal';
 import { useState } from 'react';
 
 function Bookshelf() {
@@ -53,7 +53,7 @@ function Bookshelf() {
 
             </ImageList>
 
-            <BookInfo open={open} setOpen={setOpen}/>
+            <ReviewModal open={open} setOpen={setOpen}/>
 
         </div>
     )

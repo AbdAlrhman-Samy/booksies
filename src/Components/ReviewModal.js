@@ -7,7 +7,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 
 
-function BookInfo({open, setOpen}) {
+function ReviewModal({open, setOpen}) {
 
     const handleClose = () => {
         setOpen(false);
@@ -36,4 +36,4 @@ function BookInfo({open, setOpen}) {
     )
 }
 
-export default BookInfo
+export default ReviewModal

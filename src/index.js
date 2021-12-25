@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { AuthProvider } from "./API/AuthContext";
+
+import {firebaseConfig} from './FirebaseConfig'
+import { initializeApp } from "firebase/app";
+
+
 
 //MUI imports
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
@@ -39,11 +45,15 @@ let theme = createTheme({
 
 theme = responsiveFontSizes(theme);
 
+initializeApp(firebaseConfig);
+
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <App />
-  </ThemeProvider>,
+  <AuthProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
+  </AuthProvider>,
   document.getElementById('root')
 );
