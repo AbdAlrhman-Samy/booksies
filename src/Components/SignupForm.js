@@ -10,9 +10,12 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+
 
 function SignupForm() {
     const auth = getAuth()
+    const db = getFirestore()
 
     let navigate = useNavigate();
 
@@ -29,17 +32,29 @@ function SignupForm() {
 
         createUserWithEmailAndPassword(auth, email, pswrd)
         .then(userCreds => {
+
+
             updateProfile(userCreds.user, {
                 displayName: username,
-            }).then(() => {
-                setTimeout(() => {
-                    navigate("/profile");
-                  }, 1500);
+                photoURL: `https://avatars.dicebear.com/api/bottts/${username}.svg?background=%23ffffff`
+            })
+            
+            .then(() => {
+                setDoc(doc(db,'users', `${userCreds.user.uid}`),{
+                    name: username,
+                    email: userCreds.user.email,
+                    avatar: userCreds.user.photoURL,
+                    bio: 'No Bio Yet :(',
+                    dateCreated: new Date().toUTCString()
+                })
+
+                navigate("/profile");
             })
             
         })
         .catch(err => {
             console.log(err);
+            setLoading(false)
         })
 
         return ()=> console.log('unsub');

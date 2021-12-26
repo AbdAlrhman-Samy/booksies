@@ -24,17 +24,13 @@ function Profile() {
 
     let navigate = useNavigate();
 
-    const user = useContext(AuthContext)
-
-    if (user) {console.log(user)}
+    const [userCreds, userDB] = useContext(AuthContext)
 
     const handleLogout = () => {
         signOut(getAuth())
         .then(()=>{
             console.log('logged out');
-            setTimeout(() => {
-                navigate("/");
-              }, 2000);
+            navigate("/");
         })
         .catch((err)=>{
             console.log(err);
@@ -46,14 +42,16 @@ function Profile() {
         <Container maxWidth="false">
             <Box p={1} sx={{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", textAlign:"center", }}>
 
-                <Avatar alt="SrcsticSamy Avatar"
+                <Avatar alt={`${userCreds? userCreds.displayName : null} Avatar`}
                 sx={{ minWidth: "110px", height:"auto", display:"inline-block", m:1, border:"2px solid", borderColor:"primary.light", bgcolor:"white", p:0.5}}
-                src={`https://avatars.dicebear.com/api/bottts/${user? user.displayName : "none"}.svg?background=%23ffffff`} />
+                src={userCreds? userCreds.photoURL : null } />
 
                 <Box>
                     <Typography variant="h5" sx={{fontWeight:"600"}}>
-                        {user? user.displayName : null}
-                        <IconButton aria-label="edit" color="primary" size="big"><FiEdit2/></IconButton>
+                        {userCreds? userCreds.displayName : null}
+
+                        <Link style={{ textDecoration: "none" }} to="/edit"><IconButton aria-label="edit" color="primary" sx={{ml:1}}><FiEdit2/></IconButton></Link>
+
                     </Typography>
                 </Box>
 
@@ -61,7 +59,8 @@ function Profile() {
 
             <Box mx="auto" p={0.5} mb={1} sx={{bgcolor:"background.default"}}>
                 <Typography variant="body2" sx={{fontWeight:"light", textAlign:"center"}}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, non quidem delectus omnis dignissimos optio assumenda atque vel similique. </Typography>
+                    {userDB? userDB.bio : null}
+                </Typography>
             </Box>
 
             <Box mx="auto" mb={2} sx={{display:"flex", flexDirection:"row", justifyContent:"space-between", width:"100%"}}>

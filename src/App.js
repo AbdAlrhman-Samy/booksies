@@ -11,6 +11,7 @@ import Login from "./Pages/Login"
 import Signup from "./Pages/Signup"
 import Profile from "./Pages/Profile"
 import Timeline from "./Pages/Timeline"
+import EditProfile from "./Pages/EditProfile";
 
 //Assets imports
 import bg from "./Assets/bg.svg"
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/edit" element={<EditProfile/>}/>
           <Route path="/timeline" element={<Timeline/>}/>
           <Route path="*" element={<Error/>}/>
         </Routes>
