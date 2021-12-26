@@ -14,15 +14,7 @@ function EditProfile() {
     const [newBio, setNewBio] = useState('')
     const [newName, setNewName] = useState('')
 
-    const changeDB = (itemName, itemNewValue) => {
-        updateDoc(doc(db, "users", userCreds.uid),{
-            itemName: itemNewValue
-        })
-        .then(()=>{
-            getDoc(doc(db, "users", userCreds.uid)).then((newData=>setUserDB(newData.data())))
-            setLoading(false)
-        })
-    }
+
 
     const changeName = (e) => {
         e.preventDefault()
@@ -31,8 +23,14 @@ function EditProfile() {
         updateProfile(auth.currentUser, {
             displayName: newName,
         }).then(()=>{
-            changeDB('name', newName)
-            setNewName('')
+            updateDoc(doc(db, "users", userCreds.uid),{
+                name: newName,
+            })
+            .then(()=>{
+                getDoc(doc(db, "users", userCreds.uid)).then((newData=>setUserDB(newData.data())))
+                setLoading(false)
+                setNewName('')
+            })
         })
     }
 
@@ -41,8 +39,15 @@ function EditProfile() {
         e.preventDefault()
         setLoading(true)
 
-        changeDB('bio', newBio)
-        setNewBio('')
+        updateDoc(doc(db, "users", userCreds.uid),{
+            bio: newBio
+        })
+        .then(()=>{
+            getDoc(doc(db, "users", userCreds.uid)).then((newData=>setUserDB(newData.data())))
+            setLoading(false)
+            setNewBio('')
+        })
+        
     }
 
     return (
